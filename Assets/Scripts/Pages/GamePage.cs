@@ -1,13 +1,20 @@
 ﻿
+using Photon.Pun;
+
 public class GamePage : BasePage
 {
-    private GameController _gameController;
+    private BaseGameController _gameController;
     
     public override void Open()
     {
-        _gameController = new GameController();
-        _gameController.Init();
-        _gameController.StartGame();
+        if (PhotonNetwork.IsConnected)
+        {
+        }
+        else
+        {
+            _gameController = new SoloGameController();
+            _gameController.StartGame();   
+        }
     }
 
     public override void Close()

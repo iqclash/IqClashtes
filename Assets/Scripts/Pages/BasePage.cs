@@ -1,7 +1,8 @@
 ﻿
+using Photon.Pun;
 using UnityEngine;
 
-public abstract class BasePage : MonoBehaviour , IPoolable
+public abstract class BasePage : MonoBehaviourPunCallbacks , IPoolable
 {
     [SerializeField] private PageState _pageState;
 

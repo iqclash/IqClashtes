@@ -16,6 +16,6 @@ public class MainMenuPage : BasePage, IStartPage
     
     public void MultiplayerButtonOnClick()
     {
-        PageManager.Open<GamePage>();
+        PageManager.Open<FindOpponentPage>();
     }
 }

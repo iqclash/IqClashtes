@@ -7,7 +7,6 @@ public class GameEndedController
     
     private readonly float VerticalSize;
     
-    private GameController _gameController;
     private Ball _ball;
     private float _ballSize;
     
@@ -16,13 +15,13 @@ public class GameEndedController
         VerticalSize = verticalSize;
         BallChanged(ball);
         
-        GameController.BallChanged += BallChanged;
+        BaseGameController.BallChanged += BallChanged;
         ApplicationObserver.MonoBehaviorFixedUpdate += MonoBehaviorFixedUpdate;
     }
 
     public void GameEnded()
     {
-        GameController.BallChanged -= BallChanged;
+        BaseGameController.BallChanged -= BallChanged;
         ApplicationObserver.MonoBehaviorFixedUpdate -= MonoBehaviorFixedUpdate;
         _ball = null;
     }
