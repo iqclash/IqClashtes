@@ -1,8 +1,8 @@
 ﻿
-using System;
+using Photon.Pun;
 using UnityEngine;
 
-public class Platform : MonoBehaviour , IPoolable
+public class Platform : MonoBehaviourPun , IPoolable
 {
     [SerializeField] private SpriteRenderer _spriteRenderer;
     

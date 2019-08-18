@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1895180478125138795}
   - component: {fileID: 3268602056976294317}
   - component: {fileID: 3770964423848360432}
+  - component: {fileID: -1954502506575213762}
+  - component: {fileID: 167186109165459871}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -49,6 +51,7 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 3770964423848360432}
   _spriteRenderer: {fileID: 1895180478125138795}
   _circleCollider: {fileID: 3268602056976294317}
+  _photonView: {fileID: -1954502506575213762}
 --- !u!212 &1895180478125138795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -134,3 +137,40 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-1954502506575213762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840802614852726767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 1
+  OwnershipTransfer: 1
+  ObservedComponents:
+  - {fileID: 167186109165459871}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &167186109165459871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840802614852726767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0

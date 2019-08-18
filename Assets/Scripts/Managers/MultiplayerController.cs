@@ -20,8 +20,8 @@ public static class MultiplayerController
 
    public static void Disconnect()
    {
-      PhotonNetwork.LeaveRoom();
       PhotonNetwork.Disconnect();
+      PhotonNetwork.DestroyAll();
       
       PageManager.Open<MainMenuPage>();
    }

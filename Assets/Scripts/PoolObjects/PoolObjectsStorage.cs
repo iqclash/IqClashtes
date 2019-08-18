@@ -23,7 +23,7 @@ public class PoolObjectsStorage : ScriptableObject
                 
             if(_instance != null)
                 return _instance;
-
+#if UNITY_EDITOR
             _instance = CreateInstance<PoolObjectsStorage>();
             
             if (!Directory.Exists(Path))
@@ -32,15 +32,19 @@ public class PoolObjectsStorage : ScriptableObject
             UnityEditor.AssetDatabase.CreateAsset(_instance, $"{Path}/PoolObjectsStorage.asset");
             UnityEditor.AssetDatabase.SaveAssets();
             UnityEditor.AssetDatabase.Refresh();
-
+#endif
             return _instance;
 
         }
     }
+    
+    #if UNITY_EDITOR
     
     [UnityEditor.MenuItem("TestGame/PoolObject")]
     private static void Show()
     {
         UnityEditor.Selection.activeObject = Instance;
     }
+    
+    #endif
 }

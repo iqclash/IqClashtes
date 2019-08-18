@@ -18,32 +18,37 @@ public class MovementController
         ApplicationObserver.MonoBehaviorUpdate += MonoBehaviorUpdate;
     }
 
-    public void GameEnded()
+    public virtual void GameEnded()
     {
         ApplicationObserver.MonoBehaviorUpdate -= MonoBehaviorUpdate;
         _movementPlatforms = null;
         _camera = null;
     }
 
-    private void MonoBehaviorUpdate(float timeDeltaTime)
+    protected virtual void MonoBehaviorUpdate(float timeDeltaTime)
     {
         if (_movementPlatforms.Length == 0)
             return;
 
-        var mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+        var mousePosition = _camera.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
 
+        MovePlatforms(ref mousePosition, timeDeltaTime);
+    }
+
+    protected void MovePlatforms(ref Vector3 mousePosition,float timeDeltaTime)
+    {
         for (var i = 0; i < _movementPlatforms.Length; i++)
         {
             var platform = _movementPlatforms[i];
             var position = platform.Transform.position;
 
-            if(Mathf.Approximately(position.x, mousePosition.x))
+            if (Mathf.Approximately(position.x, mousePosition.x))
                 continue;
 
             position.x += timeDeltaTime * PlatformSpeed * (mousePosition.x - position.x);
             position.x = Mathf.Clamp(position.x, (-_horizontalSize + platform.Size.x / 2f),
                 _horizontalSize - platform.Size.x / 2f);
-            
+
             platform.Transform.position = position;
         }
     }

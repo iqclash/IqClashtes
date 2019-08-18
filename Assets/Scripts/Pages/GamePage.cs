@@ -7,14 +7,11 @@ public class GamePage : BasePage
     
     public override void Open()
     {
-        if (PhotonNetwork.IsConnected)
-        {
-        }
-        else
-        {
-            _gameController = new SoloGameController();
-            _gameController.StartGame();   
-        }
+        _gameController = PhotonNetwork.IsConnected
+            ? (BaseGameController) new MultiplayerGameController()
+            : new SoloGameController();
+
+        _gameController.StartGame();
     }
 
     public override void Close()
